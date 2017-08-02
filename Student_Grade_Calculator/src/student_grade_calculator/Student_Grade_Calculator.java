@@ -108,7 +108,7 @@ public class Student_Grade_Calculator {
     }
     
     public static void updateFile(String fileName){
-        System.out.println("Continues to updateFile()");
+        System.out.println("Continues to updateFile() part 2");
         //ClassGrade course = new ClassGrade(courseName);
         //course = new ClassGrade(courseName);
         //course.categories = new Categories[numCategories];
