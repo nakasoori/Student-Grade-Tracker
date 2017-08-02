@@ -108,7 +108,7 @@ public class Student_Grade_Calculator {
     }
     
     public static void updateFile(String fileName){
-        System.out.println("Continues to updateFile() part 2");
+        System.out.println("Continues to updateFile()");
         //ClassGrade course = new ClassGrade(courseName);
         //course = new ClassGrade(courseName);
         //course.categories = new Categories[numCategories];
@@ -118,13 +118,16 @@ public class Student_Grade_Calculator {
         System.out.print("What is the name of the file? ");
         Scanner input = new Scanner(System.in);
         String fileName = input.next();
-        File file = new File(fileName);
-        while(!file.exists() || !fileName.equals("exit")){
-            System.out.println("File does not exist");
-            System.out.print("Enter a valid file or enter 'exit' to return to main menu: ");
-            System.out.println("fileName = " + fileName);
+        File file = new File(fileName + ".txt");
+        while(!file.exists()){
+            if(fileName.equals("exit"))
+                return;
+            else{
+                System.out.println("File does not exist");
+                System.out.print("Enter a valid file or enter 'exit' to return to main menu: ");
+            }
             fileName = input.next();
-            file = new File(fileName);
+            file = new File(fileName + ".txt");
         }
         updateFile(fileName);
     } 
