@@ -1,6 +1,10 @@
 package student_grade_calculator;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -20,6 +24,7 @@ public class Student_Grade_Calculator {
             cmd = input.nextInt();
             
             //Execute command
+            //NEED to remember to clear output to give nicer effect
             /* Future TODO: Display current list of files
             *   Reformat files
             *   Compare numerous files
@@ -88,7 +93,7 @@ public class Student_Grade_Calculator {
             file.close();
             System.out.print("File has been created. Continue adding assignments? (y/n)");
             String cont = in.next();
-            if(cont == "y"){
+            if(cont == "y"){ //not working right
                 System.out.println("Calling update()");
                 updateFile(courseName);
             }
@@ -109,7 +114,39 @@ public class Student_Grade_Calculator {
         Add or Remove any Assignments/Categories
     */
     public static void updateFile(String fileName){
-        System.out.println("Continues to updateFile()");
+        //Resources needed for file input
+        File file;
+        Scanner reader;
+        
+        //Initialize File and Scanner
+        try{
+            file = new File(fileName + ".txt");
+            reader = new Scanner(new BufferedReader(new FileReader(file)));
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Error opening fileName");
+            return;
+        }
+        
+        //Retrieve File name, Type, and Number of Categories
+        //Figure out how to better parse this beginnning section
+        reader.next();
+        ClassGrade course = new ClassGrade(reader.next());
+        reader.next();
+        course.setFileType(reader.next());
+        reader.next();
+        reader.next();
+        reader.next();
+        course.categories = new Categories[Integer.parseInt(reader.next())];
+        System.out.println("course name: " + course.courseName + " fileType: " + course.getFileType() + " numCategories: " + course.categories.length);
+        
+        //switch statement for user commands
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter command or type help for lsit of commands: ");
+        //Continue to add commands
+        
+        
+        
         
     }
  //=============================================================================
