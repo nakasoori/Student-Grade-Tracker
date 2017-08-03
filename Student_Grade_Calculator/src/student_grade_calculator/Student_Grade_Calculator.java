@@ -9,10 +9,6 @@ import java.util.Scanner;
  * @author Seth
  */
 public class Student_Grade_Calculator {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int cmd = -1;
@@ -20,10 +16,17 @@ public class Student_Grade_Calculator {
             //Display options
             display();
             
+            //Receive input command
             cmd = input.nextInt();
             
+            //Execute command
+            /* Future TODO: Display current list of files
+            *   Reformat files
+            *   Compare numerous files
+            *   Create Summary of multiple grades from separate files
+            */
             switch(cmd){
-                case 1:
+                case 1: //Creates new file
                     try{
                         createFile();
                     }
@@ -32,11 +35,11 @@ public class Student_Grade_Calculator {
                     }
                     break;
                     
-                case 2:
+                case 2: //Updates existing file
                     update();
                     break;
                     
-                case 3:
+                case 3: //Exits program
                     System.exit(0);
                     break;
                     
@@ -45,21 +48,12 @@ public class Student_Grade_Calculator {
                     break;
                     
             }
-        }
-        // 1) Read in File
-        try{
-            //File = createFile(fileName);
-        }
-        catch(Exception e){
-            System.out.println("Failed to create file");
-        }
-        
-        // 2) Process Data and weighted grade for class
-        
-        
-        // 3) Output data to file to update current grade
+        }        
     }
-    
+//==============================================================================
+/* Helper function that displays the main menu
+*   TODO: Update main menu options as more features are added
+*/    
     public static void display(){
         System.out.println("Welcome to the grade calculator");
         System.out.println("-------------------------------");
@@ -68,7 +62,7 @@ public class Student_Grade_Calculator {
         System.out.println("3) Exit the program");
         System.out.print(">> ");
     }
-    
+//==============================================================================    
     public static void createFile(){ 
         try {
             Scanner in = new Scanner(System.in);
@@ -106,14 +100,23 @@ public class Student_Grade_Calculator {
             System.out.println("Could not be created");
         }
     }
-    
+//==============================================================================
+    /* Want to be able to update:
+        Name of file
+        Number of Categories
+        Edit any Categories
+        Edit any Assignments
+        Add or Remove any Assignments/Categories
+    */
     public static void updateFile(String fileName){
         System.out.println("Continues to updateFile()");
-        //ClassGrade course = new ClassGrade(courseName);
-        //course = new ClassGrade(courseName);
-        //course.categories = new Categories[numCategories];
+        
     }
-    
+ //=============================================================================
+/* Helper function for passing to updateFile()
+*  Option 2 from main menu
+*  @return No return unless user cancels updating file. Passes File Name to updateFile() if successful
+*/
     public static void update(){
         System.out.print("What is the name of the file? ");
         Scanner input = new Scanner(System.in);
